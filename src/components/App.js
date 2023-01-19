@@ -26,14 +26,28 @@ function App() {
   function handleDeleteQuestion(deletedQuestion){
     // console.log("In App.js: ", deletedQuestion);
     // Filter out the deleted question and update questions state
-    const updatedQuestion = questions.filter((question) => question.id !== deletedQuestion.id);
-    setQuestions(updatedQuestion);
+    const updatedQuestions = questions.filter((question) => question.id !== deletedQuestion.id);
+    setQuestions(updatedQuestions);
+  }
+
+  function handleUpdateQuestion(updatedQuestion){
+    // console.log("In App.js: ", updatedQuestion);
+    const updatedQuestions = questions.map((question) => {
+      if(question.id !== updatedQuestion.id){
+        return question;
+      } else {
+        return updatedQuestion;
+      }
+
+    })
+    // console.log("Updated questions: ", updatedQuestions);
+    setQuestions(updatedQuestions);
   }
 
   return (
     <main>
       <AdminNavBar onChangePage={setPage} />
-      {page === "Form" ? <QuestionForm onAddNewQuestion={handleAddNewQuestion}/> : <QuestionList questions={questions} onDeleteQuestion={handleDeleteQuestion}/>}
+      {page === "Form" ? <QuestionForm onAddNewQuestion={handleAddNewQuestion}/> : <QuestionList questions={questions} onDeleteQuestion={handleDeleteQuestion} onUpdateQuestion={handleUpdateQuestion}/>}
     </main>
   );
 }
