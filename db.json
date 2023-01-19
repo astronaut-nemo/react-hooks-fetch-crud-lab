@@ -65,6 +65,17 @@
         "controlled"
       ],
       "correctIndex": 1
+    },
+    {
+      "prompt": "Who is the best BNHA character?",
+      "answers": [
+        "Bakugo",
+        "Deku",
+        "All Might",
+        "Lemillion"
+      ],
+      "correctIndex": "3",
+      "id": 7
     }
   ]
 }
